@@ -106,9 +106,7 @@ jobs:
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          sed -i 's/--set=llvm.download-ci-llvm=true/--set=source.crates-io.replace-with=mirror \\\
-          --set=source.mirror.registry=sparse+https:\/\/mirrors.bfsu.edu.cn\/crates.io-index\/ \\\
-          --set=llvm.download-ci-llvm=false/' package/feeds/packages/rust/Makefile
+          sed -i 's/download-ci-llvm=true/download-ci-llvm=false/g' "feeds/packages/lang/rust/Makefile"
 
       - name: 🧩 Load custom configuration
         run: |
@@ -196,9 +194,7 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P1_SH
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          sed -i 's/--set=llvm.download-ci-llvm=true/--set=source.crates-io.replace-with=mirror \\\
-          --set=source.mirror.registry=sparse+https:\/\/mirrors.bfsu.edu.cn\/crates.io-index\/ \\\
-          --set=llvm.download-ci-llvm=false/' package/feeds/packages/rust/Makefile
+          sed -i 's/download-ci-llvm=true/download-ci-llvm=false/g' "feeds/packages/lang/rust/Makefile"
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
 
